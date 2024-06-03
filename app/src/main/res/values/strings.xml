@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">EldarWallet</string>
+    <string name="app_name">Eldar Wallet</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
+    <string name="term_and_conditions">Acepto las <u>Políticas de Privacidad</u> y los <u>Términos y Condiciones</u></string>
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
@@ -42,4 +42,25 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="remember_password">¿Olvidaste tu usuario o contraseña?</string>
+    <string name="user">Usuario</string>
+    <string name="yes">Si</string>
+    <string name="accept">Aceptar</string>
+
+    <string name="incomplete_input">Completa todos los campos</string>
+    <string name="no">No</string>
+    <string name="invalid_cred">Usuario o Contraseña incorrectos</string>
+    <string name="retry_again">Inténtelo nuevamente</string>
+    <string name="terms_error">Tienes que aceptar los términos y condiciones</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="sign_up">Registrarse</string>
+    <string name="email_invalid">El email es inválido</string>
+    <string name="error_internet">No estas conectado a internet</string>
+    <string name="password">Contraseña</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="name">Nombre</string>
+    <string name="lastname">Apellido</string>
+    <string name="account_created">Su cuenta fue registrada</string>
+    <string name="username_already_used">El usuario ya se encuentra registrado</string>
+
 </resources>
