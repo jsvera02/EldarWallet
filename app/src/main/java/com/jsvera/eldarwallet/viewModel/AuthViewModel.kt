@@ -17,8 +17,6 @@ import kotlinx.coroutines.withContext
 
 
 class AuthViewModel(application: Application) : AndroidViewModel(application) {
-    val validateEmailLiveData = MutableLiveData<Result<User>>()
-
     //LOGIN
     private val _loginLiveData = MutableLiveData<Resource<User>>()
     val loginLiveData: LiveData<Resource<User>>
@@ -59,11 +57,11 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                 withContext(Dispatchers.IO) {
 
                     val db = EldarWalletApp().getDatabase(getApplication())
-              /*      val userInDatabase = db.getItemsDao().getUserByUsername(userName)
+                    val userInDatabase = db.getItemsDao().getUserByUsername(userName)
 
                     if (userInDatabase != null) {
                         throw Exception("User already exists")
-                    }*/
+                    }
 
                     val userId = db.getItemsDao().insertUser(
                         UserEntity(

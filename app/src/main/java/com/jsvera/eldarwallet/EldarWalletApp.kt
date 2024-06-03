@@ -7,7 +7,6 @@ import androidx.room.Room
 import com.jsvera.eldarwallet.data.local.database.ItemsDatabase
 
 class EldarWalletApp : Application() {
-
     private lateinit var databaseInstance: ItemsDatabase
 
     companion object {
@@ -15,8 +14,14 @@ class EldarWalletApp : Application() {
         lateinit var appContext: Context
     }
 
-    fun getDatabase(context: Context): ItemsDatabase {
+    override fun onCreate() {
+        super.onCreate()
+        appContext = applicationContext
+        instance = this
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
 
+    fun getDatabase(context: Context): ItemsDatabase {
         synchronized(ItemsDatabase::class.java) {
             if (!::databaseInstance.isInitialized) {
                 val builder = Room.databaseBuilder(
@@ -28,13 +33,6 @@ class EldarWalletApp : Application() {
             }
         }
         return databaseInstance
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-        appContext = applicationContext
-        instance = this
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
 }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.jsvera.eldarwallet.R
 import com.jsvera.eldarwallet.data.Resource
 import com.jsvera.eldarwallet.data.base.BaseActivity
@@ -20,7 +19,6 @@ import com.jsvera.eldarwallet.viewModel.AuthViewModel
 class LoginActivity : BaseActivity() {
     private val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
     private val authViewModel by viewModels<AuthViewModel>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

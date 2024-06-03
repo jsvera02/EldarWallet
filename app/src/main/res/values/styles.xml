@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="textRobotoRegular18" >
+    <style name="textRobotoRegular18">
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">18sp</item>
     </style>
+
     <style name="btnDefaultWhite" parent="Widget.MaterialComponents.Button">
         <item name="background">@color/bluePrimary</item>
+        <item name="rippleColor">@color/bluePrimary</item>
+        <item name="android:textColorHighlight">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
         <item name="backgroundTint">@color/white</item>
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:includeFontPadding">false</item>
         <item name="textAllCaps">false</item>
         <item name="android:textColor">@color/bluePrimary</item>
-<item name="android:padding">15dp</item>
+        <item name="android:padding">15dp</item>
         <item name="android:letterSpacing">0.01</item>
         <item name="android:textSize">18sp</item>
         <item name="cornerRadius">10dp</item>
@@ -30,9 +34,7 @@
         <item name="android:textSize">18sp</item>
         <item name="cornerRadius">10dp</item>
     </style>
-    <style name="CustomEditTextStyle" parent="Widget.AppCompat.EditText">
-        <item name="colorControlActivated">#FF0000</item>
-    </style>
+
 
     <style name="StyleButtonAppCustom">
         <item name="android:background">@drawable/selector_button</item>
@@ -55,4 +57,35 @@
         <item name="android:includeFontPadding">false</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="CustomInputTextStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:padding">0dp</item>
+        <item name="android:textCursorDrawable">@drawable/edit_text_cursor_chat</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxStrokeColor">@color/bluePrimary</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="cursorColor">@color/bluePrimary</item>
+        <item name="errorTextColor">@color/redError</item>
+        <item name="colorError">@color/redError</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="hintEnabled">false</item>
+        <item name="expandedHintEnabled">false</item>
+    </style>
+
+    <style name="CustomEditTextStyle" parent="ThemeOverlay.Material3.TextInputEditText">
+        <item name="android:drawableTint">@color/bluePrimary</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:textAppearance">@style/textRobotoRegular18</item>
+        <item name="android:textColor">@color/bluePrimary</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textCursorDrawable">@drawable/edit_text_cursor_chat</item>
+    </style>
+
 </resources>
