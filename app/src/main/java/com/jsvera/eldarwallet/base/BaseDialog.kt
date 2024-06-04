@@ -1,4 +1,4 @@
-package com.jsvera.eldarwallet.data.base
+package com.jsvera.eldarwallet.base
 
 import android.os.Bundle
 import android.util.Patterns

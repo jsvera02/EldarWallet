@@ -2,20 +2,29 @@ package com.jsvera.eldarwallet.data.local.entities
 
 import com.google.gson.annotations.SerializedName
 
-data class Card (
-@SerializedName("number")
-var number:String?=null,
+data class Card(
+    @SerializedName("card_id")
+    var cardId: Long? = null,
 
-@SerializedName("name")
-var name:String?=null,
+    @SerializedName("user_id")
+    var userId: Long? = null,
 
-@SerializedName("expiration_date")
-var expirationDate:String?=null,
+    @SerializedName("card_number")
+    var cardNumber: String? = null,
 
-@SerializedName("security_code")
-var securityCode:String?=null,
+    @SerializedName("card_holder_name")
+    var cardHolderName: String? = null,
 
-@SerializedName("dni_number")
-var dniNumber:String?=null,
+    @SerializedName("card_type")
+    var cardType: String? = null,
 
-)
+    @SerializedName("name")
+    var name: String? = null,
+
+    @SerializedName("expiration_date")
+    var expirationDate: String? = null,
+
+    @SerializedName("dni")
+    var dni: String,
+
+    )

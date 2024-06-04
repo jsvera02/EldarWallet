@@ -18,10 +18,13 @@ interface ApplicationDao {
     suspend fun insertCard(cardEntity: CardEntity)
 
     @Transaction
-    @Query("SELECT * FROM UserEntity WHERE user_name == :userName AND password == :password")
+    @Query("SELECT * FROM UserEntity WHERE userName == :userName AND password == :password")
     suspend fun getUser(userName: String, password: String): List<UserWithCards>?
 
-    @Transaction
-    @Query("SELECT * FROM UserEntity WHERE user_name == :userName")
-    suspend fun getUserByUsername(userName: String): List<UserWithCards>?
+    @Query("SELECT * FROM UserEntity WHERE userName = :username AND password = :password")
+    suspend fun getUserByUsernameAndPassword(username: String, password: String): UserEntity?
+
+    @Query("SELECT * FROM UserEntity WHERE userName = :userName")
+    suspend fun getUserByUsername(userName: String): UserEntity?
+
 }

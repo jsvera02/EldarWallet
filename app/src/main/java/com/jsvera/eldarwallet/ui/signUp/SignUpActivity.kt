@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.jsvera.eldarwallet.R
 import com.jsvera.eldarwallet.data.Resource
-import com.jsvera.eldarwallet.data.base.BaseActivity
-import com.jsvera.eldarwallet.data.base.BaseDialog
+import com.jsvera.eldarwallet.base.BaseActivity
+import com.jsvera.eldarwallet.base.BaseDialog
 import com.jsvera.eldarwallet.databinding.ActivitySignUpBinding
-import com.jsvera.eldarwallet.ui.home.HomeActivity
+import com.jsvera.eldarwallet.ui.main.MainActivity
 import com.jsvera.eldarwallet.viewModel.AuthViewModel
 
 class SignUpActivity : BaseActivity() {
@@ -32,7 +34,7 @@ class SignUpActivity : BaseActivity() {
                     dialog.onClickAccept = {
                         dialog.dismiss()
                         startActivity(
-                            Intent(this@SignUpActivity, HomeActivity::class.java)
+                            Intent(this@SignUpActivity, MainActivity::class.java)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                         )
                     }
@@ -61,6 +63,12 @@ class SignUpActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBarsInsets.left, systemBarsInsets.top, systemBarsInsets.right, systemBarsInsets.bottom)
+            insets
+        }
+
         binding.apply {
 
             btnBack.setOnClickListener {

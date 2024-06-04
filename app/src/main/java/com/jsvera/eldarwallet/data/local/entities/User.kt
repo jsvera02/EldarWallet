@@ -15,9 +15,9 @@ data class User(
     @SerializedName("cards")
     var cards: MutableList<Card>? = mutableListOf(),
     @SerializedName("balance")
-    var balance: Long = 100000,
+    var balance: Long = 0,
     @SerializedName("id")
-    var id: Long? = null,
+    var userId: Long = 0,
     @SerializedName("qr")
     var qr: Bitmap? = null
 )

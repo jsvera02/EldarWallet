@@ -1,4 +1,4 @@
-package com.jsvera.eldarwallet
+package com.jsvera.eldarwallet.di
 
 import android.app.Application
 import android.content.Context

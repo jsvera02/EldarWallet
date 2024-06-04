@@ -2,7 +2,7 @@ package com.jsvera.eldarwallet.data.local
 
 import android.content.Context
 import com.google.gson.Gson
-import com.jsvera.eldarwallet.EldarWalletApp
+import com.jsvera.eldarwallet.di.EldarWalletApp
 import com.jsvera.eldarwallet.data.local.entities.User
 
 object AppPreferences {

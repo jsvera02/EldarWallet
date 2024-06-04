@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.jsvera.eldarwallet.R
 import com.jsvera.eldarwallet.data.Resource
-import com.jsvera.eldarwallet.data.base.BaseActivity
-import com.jsvera.eldarwallet.data.base.BaseDialog
+import com.jsvera.eldarwallet.base.BaseActivity
+import com.jsvera.eldarwallet.base.BaseDialog
 import com.jsvera.eldarwallet.databinding.ActivityLoginBinding
-import com.jsvera.eldarwallet.ui.home.HomeActivity
+import com.jsvera.eldarwallet.ui.main.MainActivity
 import com.jsvera.eldarwallet.ui.signUp.SignUpActivity
 import com.jsvera.eldarwallet.utils.gone
 import com.jsvera.eldarwallet.utils.isConnected
@@ -24,6 +26,12 @@ class LoginActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBarsInsets.left, systemBarsInsets.top, systemBarsInsets.right, systemBarsInsets.bottom)
+            insets
+        }
+
         with(binding) {
             btnLogin.setOnClickListener {
                 val userName = etUser.text.toString()
@@ -61,7 +69,7 @@ class LoginActivity : BaseActivity() {
                 is Resource.Success -> {
                     binding.progressBar.gone()
                     binding.btnLogin.visible()
-                    startActivity(Intent(applicationContext, HomeActivity::class.java))
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
                     finish()
                 }
 

@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.jsvera.eldarwallet.EldarWalletApp
+import com.jsvera.eldarwallet.di.EldarWalletApp
 import com.jsvera.eldarwallet.data.Resource
 import com.jsvera.eldarwallet.data.local.AppPreferences
 import com.jsvera.eldarwallet.data.local.database.UserEntity
@@ -55,7 +55,6 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                 _signUpLiveData.postValue(Resource.Loading())
 
                 withContext(Dispatchers.IO) {
-
                     val db = EldarWalletApp().getDatabase(getApplication())
                     val userInDatabase = db.getItemsDao().getUserByUsername(userName)
 
@@ -67,21 +66,21 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                         UserEntity(
                             userId = 0,
                             userName = userName,
-                            name = lastName,
-                            lastName = name,
+                            name = name,
+                            lastName = lastName,
                             password = password,
-                            balance = 0
+                            balance = 1000000
                         )
                     )
 
                     val user = User(
-                        name = userName,
-                        lastName = name,
-                        userName = lastName,
+                        name = name,
+                        lastName = lastName,
+                        userName = userName,
                         password = password
                     ).apply {
-                        balance = 0
-                        id = userId
+                        this.balance = 1000000
+                        this.userId = userId
                     }
                     AppPreferences.setUser(user)
                     _signUpLiveData.postValue(Resource.Success(user))
@@ -91,6 +90,4 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
-
-
 }

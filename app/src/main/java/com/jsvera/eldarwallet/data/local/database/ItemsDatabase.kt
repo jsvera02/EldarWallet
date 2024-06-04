@@ -9,4 +9,5 @@ import androidx.room.RoomDatabase
 )
 abstract class ItemsDatabase : RoomDatabase() {
     abstract fun getItemsDao(): ApplicationDao
+    abstract fun cardDao(): CardDao
 }

@@ -21,13 +21,11 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/eldar_logo"
-            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.35"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.65"
-            tools:visibility="invisible" />
+            app:layout_constraintWidth_percent="0.65" />
 
         <TextView
             android:id="@+id/btnForgotPassword"

@@ -17,7 +17,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/titleSingUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:text="Registro"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="30dp"
@@ -25,31 +39,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:gravity="center"
-            android:text="Registro"
-            android:textColor="@color/white"
-            android:textSize="32sp" />
+        app:layout_constraintTop_toBottomOf="@+id/titleSingUp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_text_height"
-            android:padding="0dp"
             android:layout_marginTop="22dp"
+            android:hint="@string/username"
+            android:padding="0dp"
+            android:textCursorDrawable="@drawable/edit_text_cursor_chat"
             app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
             app:expandedHintEnabled="false"
-            android:hint="@string/username"
-            android:textCursorDrawable="@drawable/edit_text_cursor_chat"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -57,7 +62,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:textCursorDrawable="@drawable/edit_text_cursor_chat"
                 android:hint="@string/username"
                 android:inputType="textEmailAddress"
                 android:maxLength="35"
@@ -66,22 +70,24 @@
                 android:textAppearance="@style/textRobotoRegular18"
                 android:textColor="@color/bluePrimary"
                 android:textColorHint="@color/grey"
+                android:textCursorDrawable="@drawable/edit_text_cursor_chat"
                 android:textSize="18sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_text_height"
-            android:padding="0dp"
             android:layout_marginTop="22dp"
+            android:hint="@string/lastname"
+            android:padding="0dp"
+            android:textCursorDrawable="@drawable/edit_text_cursor_chat"
             app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
             app:expandedHintEnabled="false"
-            android:hint="@string/lastname"
-            android:textCursorDrawable="@drawable/edit_text_cursor_chat"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -89,7 +95,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:textCursorDrawable="@drawable/edit_text_cursor_chat"
                 android:hint="@string/name"
                 android:inputType="textEmailAddress"
                 android:maxLength="35"
@@ -98,22 +103,24 @@
                 android:textAppearance="@style/textRobotoRegular18"
                 android:textColor="@color/bluePrimary"
                 android:textColorHint="@color/grey"
+                android:textCursorDrawable="@drawable/edit_text_cursor_chat"
                 android:textSize="18sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_text_height"
-            android:padding="0dp"
             android:layout_marginTop="22dp"
+            android:hint="@string/lastname"
+            android:padding="0dp"
+            android:textCursorDrawable="@drawable/edit_text_cursor_chat"
             app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
             app:expandedHintEnabled="false"
-            android:hint="@string/lastname"
-            android:textCursorDrawable="@drawable/edit_text_cursor_chat"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -121,7 +128,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:textCursorDrawable="@drawable/edit_text_cursor_chat"
                 android:hint="@string/lastname"
                 android:inputType="textEmailAddress"
                 android:maxLength="35"
@@ -130,6 +136,7 @@
                 android:textAppearance="@style/textRobotoRegular18"
                 android:textColor="@color/bluePrimary"
                 android:textColorHint="@color/grey"
+                android:textCursorDrawable="@drawable/edit_text_cursor_chat"
                 android:textSize="18sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,15 +148,15 @@
             android:hint="@string/password"
             android:maxLength="10"
             android:padding="0dp"
+            android:textCursorDrawable="@drawable/edit_text_cursor_chat"
             app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
             app:expandedHintEnabled="false"
             app:hintEnabled="false"
-            android:textCursorDrawable="@drawable/edit_text_cursor_chat"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/bluePrimary">
 
