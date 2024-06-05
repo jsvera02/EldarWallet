@@ -5,6 +5,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import com.jsvera.eldarwallet.data.local.entities.CardEntity
+import com.jsvera.eldarwallet.data.local.entities.UserEntity
 import com.jsvera.eldarwallet.data.local.entities.UserWithCards
 
 @Dao
@@ -13,9 +15,11 @@ interface ApplicationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(userEntity: UserEntity): Long
 
+/*
     @Transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCard(cardEntity: CardEntity)
+*/
 
     @Transaction
     @Query("SELECT * FROM UserEntity WHERE userName == :userName AND password == :password")

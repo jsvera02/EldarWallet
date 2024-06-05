@@ -7,9 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.jsvera.eldarwallet.di.EldarWalletApp
-import com.jsvera.eldarwallet.data.Resource
+import com.jsvera.eldarwallet.data.remote.Resource
 import com.jsvera.eldarwallet.data.local.AppPreferences
-import com.jsvera.eldarwallet.data.local.database.UserEntity
+import com.jsvera.eldarwallet.data.local.entities.UserEntity
 import com.jsvera.eldarwallet.data.local.entities.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.jsvera.eldarwallet.R
-import com.jsvera.eldarwallet.data.Resource
+import com.jsvera.eldarwallet.data.remote.Resource
 import com.jsvera.eldarwallet.base.BaseActivity
 import com.jsvera.eldarwallet.base.BaseDialog
 import com.jsvera.eldarwallet.databinding.ActivityLoginBinding
@@ -21,42 +21,6 @@ import com.jsvera.eldarwallet.viewModel.AuthViewModel
 class LoginActivity : BaseActivity() {
     private val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
     private val authViewModel by viewModels<AuthViewModel>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-        enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBarsInsets.left, systemBarsInsets.top, systemBarsInsets.right, systemBarsInsets.bottom)
-            insets
-        }
-
-        with(binding) {
-            btnLogin.setOnClickListener {
-                val userName = etUser.text.toString()
-                val password = etPassword.text.toString()
-                if (userName.isEmpty() || password.isEmpty()) {
-                    val dialog = BaseDialog.newInstance(
-                        getString(R.string.app_name),
-                        getString(R.string.incomplete_input),
-                        showBtnPositive = true,
-                        textBtnPositive = getString(R.string.accept)
-                    )
-                    dialog.onClickAccept = {
-                        dialog.dismiss()
-                    }
-                    dialog.show(supportFragmentManager, null)
-                } else {
-                    authViewModel.login(userName, password)
-                }
-            }
-
-            btnRegister.setOnClickListener {
-                startActivity(Intent(this@LoginActivity, SignUpActivity::class.java))
-            }
-        }
-    }
 
     override fun initViewModel() {
         authViewModel.loginLiveData.observe(this) { resource ->
@@ -106,4 +70,41 @@ class LoginActivity : BaseActivity() {
             }
         }
     }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBarsInsets.left, systemBarsInsets.top, systemBarsInsets.right, systemBarsInsets.bottom)
+            insets
+        }
+
+        with(binding) {
+            btnLogin.setOnClickListener {
+                val userName = etUser.text.toString()
+                val password = etPassword.text.toString()
+                if (userName.isEmpty() || password.isEmpty()) {
+                    val dialog = BaseDialog.newInstance(
+                        getString(R.string.app_name),
+                        getString(R.string.incomplete_input),
+                        showBtnPositive = true,
+                        textBtnPositive = getString(R.string.accept)
+                    )
+                    dialog.onClickAccept = {
+                        dialog.dismiss()
+                    }
+                    dialog.show(supportFragmentManager, null)
+                } else {
+                    authViewModel.login(userName, password)
+                }
+            }
+
+            btnRegister.setOnClickListener {
+                startActivity(Intent(this@LoginActivity, SignUpActivity::class.java))
+            }
+        }
+    }
+
+
 }

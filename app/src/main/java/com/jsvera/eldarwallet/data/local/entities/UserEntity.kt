@@ -1,4 +1,4 @@
-package com.jsvera.eldarwallet.data.local.database
+package com.jsvera.eldarwallet.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

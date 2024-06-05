@@ -1,4 +1,4 @@
-package com.jsvera.eldarwallet.data
+package com.jsvera.eldarwallet.data.remote
 
 sealed class Resource<T>(
     val data: T? = null,

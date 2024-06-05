@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/ic_user"
                     android:hint="@string/user"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:maxLength="35"
                     />
             </com.google.android.material.textfield.TextInputLayout>

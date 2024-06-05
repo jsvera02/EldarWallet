@@ -1,6 +1,6 @@
 package com.jsvera.eldarwallet.utils
 
-import com.jsvera.eldarwallet.data.local.database.UserEntity
+import com.jsvera.eldarwallet.data.local.entities.UserEntity
 import com.jsvera.eldarwallet.data.local.entities.User
 
 fun UserEntity.toUser(): User {

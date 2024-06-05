@@ -6,6 +6,7 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import com.jsvera.eldarwallet.R
 import com.jsvera.eldarwallet.ui.login.LoginActivity
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -18,6 +19,18 @@ abstract class BaseActivity : AppCompatActivity() {
 
     abstract fun initViewModel()
 
+    fun showErrorDialog(title: String, message: String) {
+        val dialog = BaseDialog.newInstance(
+            title,
+            message,
+            showBtnPositive = true,
+            textBtnPositive = getString(R.string.accept)
+        )
+        dialog.onClickAccept = {
+            dialog.dismiss()
+        }
+        dialog.show(supportFragmentManager, null)
+    }
 
     fun goToLogin(/*shareContentId:String?*/) {
         val i = Intent(this, LoginActivity::class.java)

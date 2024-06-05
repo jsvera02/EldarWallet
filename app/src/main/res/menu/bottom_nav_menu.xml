@@ -9,19 +9,19 @@
         android:icon="@drawable/ic_tab_home"/>
 
     <item
-        android:id="@+id/itemQrGenerator"
+        android:id="@+id/itemGenerator"
         android:enabled="true"
         android:icon="@drawable/ic_tab_qr_generator"
         android:title="@string/generate_qr" />
 
     <item
-        android:id="@+id/itemSearch"
+        android:id="@+id/itemScan"
         android:enabled="true"
         android:icon="@drawable/ic_tab_scan_code"
         android:title="@string/scan_qr"  />
 
     <item
-        android:id="@+id/itemConfig"
+        android:id="@+id/itemCard"
         android:enabled="true"
         android:title="@string/pay_card"
         android:icon="@drawable/ic_tab_card_pay"/>

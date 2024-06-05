@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.room.Room
 import com.jsvera.eldarwallet.data.local.database.ItemsDatabase
+import com.jsvera.eldarwallet.utils.EncryptionUtil
 
 class EldarWalletApp : Application() {
     private lateinit var databaseInstance: ItemsDatabase
@@ -17,6 +18,7 @@ class EldarWalletApp : Application() {
     override fun onCreate() {
         super.onCreate()
         appContext = applicationContext
+        EncryptionUtil.initialize(this)
         instance = this
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }

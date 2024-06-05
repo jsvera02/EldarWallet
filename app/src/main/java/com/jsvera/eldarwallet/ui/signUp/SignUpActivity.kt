@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.jsvera.eldarwallet.R
-import com.jsvera.eldarwallet.data.Resource
+import com.jsvera.eldarwallet.data.remote.Resource
 import com.jsvera.eldarwallet.base.BaseActivity
 import com.jsvera.eldarwallet.base.BaseDialog
 import com.jsvera.eldarwallet.databinding.ActivitySignUpBinding

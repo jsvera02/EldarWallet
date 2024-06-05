@@ -2,8 +2,6 @@ package com.jsvera.eldarwallet.data.local.entities
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.jsvera.eldarwallet.data.local.database.CardEntity
-import com.jsvera.eldarwallet.data.local.database.UserEntity
 
 data class UserWithCards(
     @Embedded val user: UserEntity,

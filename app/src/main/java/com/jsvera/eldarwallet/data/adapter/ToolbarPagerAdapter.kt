@@ -32,6 +32,10 @@ class ToolbarPagerAdapter(
     override fun createFragment(position: Int): Fragment {
         return mFragmentList[position]
     }
+    fun scrollToTop(position: Int){
+        val fragment = mFragmentList[position]
+        (fragment as? TabFragmentHandler)?.scrollToTop()
+    }
 
     fun handleAction(position: Int,actionCode:String){
         val fragment = mFragmentList[position]

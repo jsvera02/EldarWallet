@@ -24,7 +24,10 @@ data class Card(
     @SerializedName("expiration_date")
     var expirationDate: String? = null,
 
+    @SerializedName("cvv")
+    var cvv: String? = null,
+
     @SerializedName("dni")
-    var dni: String,
+    var dni: String? = null,
 
     )

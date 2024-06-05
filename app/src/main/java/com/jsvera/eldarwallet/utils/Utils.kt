@@ -3,7 +3,10 @@ package com.jsvera.eldarwallet.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
 import androidx.core.view.isGone
 
     fun View.visible() {
@@ -60,4 +63,31 @@ fun Context.isConnected(): Boolean {
         else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) return true
     }
     return false
+}
+fun addAutoFormatExpirationDateWatcher(editText: EditText) {
+    val textWatcher = object : TextWatcher {
+        private var isEditing = false
+
+        override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {}
+
+        override fun afterTextChanged(editable: Editable) {
+            if (isEditing) return
+
+            isEditing = true
+
+            val input = editable.toString().replace("/", "")
+            val formatted = when {
+                input.length >= 3 -> "${input.substring(0, 2)}/${input.substring(2)}"
+                else -> input
+            }
+
+            editable.replace(0, editable.length, formatted)
+
+            isEditing = false
+        }
+    }
+
+    editText.addTextChangedListener(textWatcher)
 }

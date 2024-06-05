@@ -80,7 +80,7 @@
         <item name="android:drawableTint">@color/bluePrimary</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:padding">10dp</item>
-        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingStart">18dp</item>
         <item name="android:textAppearance">@style/textRobotoRegular18</item>
         <item name="android:textColor">@color/bluePrimary</item>
         <item name="android:textColorHint">@color/grey</item>
