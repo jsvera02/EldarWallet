@@ -29,5 +29,7 @@ data class Card(
 
     @SerializedName("dni")
     var dni: String? = null,
+    @SerializedName("is_selected")
+    var isSelected: Boolean? = null,
 
     )

@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        style="@style/BoldLargeTextView"
         android:id="@+id/titleSingUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

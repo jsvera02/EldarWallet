@@ -1,8 +1,6 @@
 package com.jsvera.eldarwallet.base
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.ConnectivityManager
 import androidx.core.app.ActivityCompat
@@ -14,12 +12,14 @@ import com.jsvera.eldarwallet.ui.main.MainActivity
 
 
 open class BaseFragment() : Fragment() {
+    private var hasErrorDialogBeenShown = false
 
     fun goToLogin() {
         val i = Intent(requireContext(), LoginActivity::class.java)
         i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(i)
     }
+
     fun Context.showMessage(error: String?, manager: FragmentManager, viewModel: Unit) {
         val dialog2 = BaseDialog.newInstance(
             "Revisa tu conexión a internet",
@@ -45,18 +45,19 @@ open class BaseFragment() : Fragment() {
         return currentNetwork != null
     }
 
-
     fun showErrorDialog(title: String, message: String) {
-        val dialog = BaseDialog.newInstance(
-            title,
-            message,
-            showBtnPositive = true,
-            textBtnPositive = getString(R.string.accept)
-        )
-        dialog.onClickAccept = {
-            dialog.dismiss()
+        if (!hasErrorDialogBeenShown) {
+            hasErrorDialogBeenShown = true
+            val dialog = BaseDialog.newInstance(
+                title,
+                message,
+                showBtnPositive = true,
+                textBtnPositive = getString(R.string.accept)
+            )
+            dialog.onClickAccept = {
+                dialog.dismiss()
+            }
+            dialog.show(childFragmentManager, null)
         }
-        dialog.show(childFragmentManager, null)
     }
-
 }

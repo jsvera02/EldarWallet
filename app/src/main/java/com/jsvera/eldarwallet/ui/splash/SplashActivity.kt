@@ -11,8 +11,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.jsvera.eldarwallet.data.local.AppPreferences
 import com.jsvera.eldarwallet.databinding.ActivitySplashBinding
-import com.jsvera.eldarwallet.ui.main.MainActivity
 import com.jsvera.eldarwallet.ui.login.LoginActivity
+import com.jsvera.eldarwallet.ui.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -24,16 +24,22 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         enableEdgeToEdge()
-
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBarsInsets.left, systemBarsInsets.top, systemBarsInsets.right, systemBarsInsets.bottom)
+            v.setPadding(
+                systemBarsInsets.left,
+                systemBarsInsets.top,
+                systemBarsInsets.right,
+                systemBarsInsets.bottom
+            )
             insets
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val userLogged = AppPreferences.getUser()
-            val splashIntent: Intent = if (userLogged != null) {
+            val userSaved = AppPreferences.getUser()
+            val isLogged = AppPreferences.isLoggedIn()
+
+            val splashIntent: Intent = if (userSaved != null && isLogged) {
                 Intent(this, MainActivity::class.java)
             } else {
                 Intent(this, LoginActivity::class.java)

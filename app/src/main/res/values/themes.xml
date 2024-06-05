@@ -10,12 +10,16 @@
         <item name="colorOnSecondary">@color/darkBlue</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/darkBlue</item>
+
         <!-- Customize your theme here. -->
     </style>
     <!-- Base application theme. -->
     <style name="Base.Theme.EldarWallet" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:colorActivatedHighlight">@color/bluePrimary</item>
+        <item name="android:colorControlActivated">@color/bluePrimary</item>
+        <item name="android:colorAccent">@color/bluePrimary</item>
         <item name="android:windowBackground">@color/darkBlue</item>
         <item name="colorAccent">@color/bluePrimary</item>
         <item name="colorControlActivated">@color/bluePrimary</item>

@@ -1,9 +1,9 @@
 package com.jsvera.eldarwallet.data.local.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import androidx.room.ColumnInfo
 import com.jsvera.eldarwallet.utils.EncryptionUtil
 
 
@@ -45,7 +45,9 @@ data class CardEntity(
     val cvv: String,
 
     @ColumnInfo(name = "dni")
-    val dni: String
+    val dni: String,
+    @ColumnInfo(name = "is_selected")
+    var isSelected: Boolean,
 ) {
     fun toCard(): Card {
         return Card(
@@ -55,9 +57,10 @@ data class CardEntity(
             name = this.name,
             cardHolderName = this.card_holder_name,
             cardType = this.card_type,
-            cvv =EncryptionUtil.decrypt(this.cvv),
+            cvv = EncryptionUtil.decrypt(this.cvv),
             expirationDate = this.expiration_date,
-            dni = this.dni
+            dni = this.dni,
+            isSelected=this.isSelected
         )
     }
 }

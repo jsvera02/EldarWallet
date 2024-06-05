@@ -15,6 +15,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleGenerator" />
 
     <TextView
+        style="@style/BoldLargeTextView"
         android:layout_marginTop="30dp"
         android:id="@+id/titleGenerator"
         android:layout_width="0dp"

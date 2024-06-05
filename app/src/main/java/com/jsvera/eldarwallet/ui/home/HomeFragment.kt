@@ -7,15 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.jsvera.eldarwallet.R
 import com.jsvera.eldarwallet.base.BaseDialog
 import com.jsvera.eldarwallet.base.BaseFragment
-import com.jsvera.eldarwallet.data.remote.Resource
 import com.jsvera.eldarwallet.data.adapter.CardAdapter
 import com.jsvera.eldarwallet.data.local.AppPreferences
 import com.jsvera.eldarwallet.data.local.entities.CardEntity
+import com.jsvera.eldarwallet.data.remote.Resource
 import com.jsvera.eldarwallet.databinding.FragmentHomeBinding
 import com.jsvera.eldarwallet.ui.addCard.AddCardActivity
 import com.jsvera.eldarwallet.utils.isConnected
@@ -40,16 +38,21 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonAddCard.setOnClickListener {
+        binding.btnAddCard.setOnClickListener {
             val i = Intent(requireContext(), AddCardActivity::class.java)
             startActivity(i)
         }
+        binding.btnLogOut.setOnClickListener {
+            AppPreferences.setLoggedIn(false)
+            goToLogin()
+        }
+        val user = AppPreferences.getUser()
         val userId = AppPreferences.getUser()?.userId ?: 0
+        binding.tvWelcome.text = "Bienvenido " + user?.name.toString() + " " +  user?.lastName.toString()
         cardViewModel.loadCards(userId)
         observeCards()
         observeUserData()
         loadUserData()
-
     }
 
     private fun observeCards() {
@@ -59,12 +62,14 @@ class HomeFragment : BaseFragment() {
                     binding.progressBar.visibility = View.VISIBLE
                     binding.rvCards.visibility = View.GONE
                 }
+
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     binding.rvCards.visibility = View.VISIBLE
                     val cards = resource.data ?: emptyList()
                     setupRecyclerView(cards)
                 }
+
                 is Resource.Error -> {
                     binding.progressBar.visibility = View.GONE
                     val errorMessage = resource.e?.message ?: getString(R.string.unknown_error)
@@ -94,14 +99,16 @@ class HomeFragment : BaseFragment() {
                     binding.progressBar.visibility = View.VISIBLE
                     binding.rvCards.visibility = View.GONE
                 }
+
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     binding.rvCards.visibility = View.VISIBLE
                     val user = resource.data
                     user?.let {
-                        binding.textViewBalance.text = String.format("Balance: %d", user.balance)
+                        binding.tvBalance.text = String.format("Balance: $%d", user.balance)
                     }
                 }
+
                 is Resource.Error -> {
                     binding.progressBar.visibility = View.GONE
                     val errorMessage = resource.e ?: getString(R.string.unknown_error)
@@ -120,9 +127,9 @@ class HomeFragment : BaseFragment() {
                         dialog.show(childFragmentManager, null)
                     }
                 }
-                }
             }
         }
+    }
 
     private fun loadUserData() {
         val userName = AppPreferences.getUser()?.userName
@@ -132,10 +139,11 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setupRecyclerView(cards: List<CardEntity>) {
-        val cardAdapter = CardAdapter(cards)
+        val cardAdapter = CardAdapter(cards, context = requireContext())
         binding.rvCards.apply {
             adapter = cardAdapter
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 

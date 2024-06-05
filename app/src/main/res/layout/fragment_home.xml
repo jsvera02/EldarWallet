@@ -9,14 +9,22 @@
     tools:context=".ui.home.HomeFragment">
 
     <TextView
+        android:gravity="center"
+        style="@style/BoldLargeTextView"
+        android:id="@+id/tvWelcome"
         android:textColor="@color/white"
-        android:fontFamily="@font/roboto_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido" />
 
-        android:id="@+id/textViewBalance"
+    <TextView
+        android:layout_marginTop="10dp"
+        style="@style/BoldLargeTextView"
+        android:fontFamily="@font/roboto_bold"
+        android:id="@+id/tvBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:textStyle="bold"
         android:text="Balance: $"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"/>
@@ -35,7 +43,7 @@
         tools:listitem="@layout/item_card" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonAddCard"
+        android:id="@+id/btnAddCard"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,8 +52,21 @@
         android:layout_marginBottom="16dp"
         android:drawableEnd="@drawable/ic_tab_card_pay"
         android:drawableTint="@color/bluePrimary"
-
         style="@style/btnDefaultWhite"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogOut"
+        style="@style/btnOutlined"
+        android:textColor="@color/red"
+        app:strokeColor="@color/red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="16dp"
+        android:drawableEnd="@drawable/ic_logout"
+        android:drawableTint="@color/red"
+        android:text="@string/log_out" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progressBar"

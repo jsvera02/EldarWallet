@@ -35,7 +35,36 @@
         <item name="cornerRadius">10dp</item>
     </style>
 
+    <style name="BoldLargeTextView" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
 
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="BoldNormalTextView" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="CardFontStyle" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/kredit</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/bluePrimary</item>
+    </style>
+    <style name="RegularNormalTextView" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="RegularSmallTextView" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
     <style name="StyleButtonAppCustom">
         <item name="android:background">@drawable/selector_button</item>
         <item name="android:layout_width">match_parent</item>

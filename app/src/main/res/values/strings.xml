@@ -68,11 +68,10 @@
     <string name="generate_qr">Generar QR</string>
     <string name="scan_qr">Escanear QR</string>
     <string name="pay_card">Pagar con tarjeta</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="card_number">Número de Tarjeta</string>
     <string name="owner_name">Nombre del Titular</string>
     <string name="balance">Balance: $0.00</string>
-    <string name="add_card">Add Card</string>
+    <string name="add_card">Agregar Tarjeta</string>
+    <string name="log_out">Cerrar sesión</string>
     <string name="unknown_error">Error desconocido</string>
 </resources>

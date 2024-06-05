@@ -12,10 +12,10 @@ import androidx.core.view.WindowInsetsCompat
 import com.jsvera.eldarwallet.R
 import com.jsvera.eldarwallet.base.BaseActivity
 import com.jsvera.eldarwallet.base.BaseDialog
-import com.jsvera.eldarwallet.data.remote.Resource
 import com.jsvera.eldarwallet.data.local.AppPreferences
 import com.jsvera.eldarwallet.data.local.AppPreferences.getUser
 import com.jsvera.eldarwallet.data.local.entities.CardEntity
+import com.jsvera.eldarwallet.data.remote.Resource
 import com.jsvera.eldarwallet.databinding.ActivityAddCardBinding
 import com.jsvera.eldarwallet.ui.main.MainActivity
 import com.jsvera.eldarwallet.utils.AppConstants.KEY_AMEX
@@ -54,9 +54,9 @@ class AddCardActivity : BaseActivity() {
                 val expirationDate = etExpirationDate.text.toString()
                 val cvv = etCVV.text.toString()
                 val dni = etDNI.text.toString()
-                val nameUser=getUser()?.name
-                val lastNameUser=getUser()?.lastName
-                var validateName:Boolean =false
+                val nameUser = getUser()?.name
+                val lastNameUser = getUser()?.lastName
+                var validateName: Boolean = false
                 if (nameUser.isNullOrEmpty() || lastNameUser.isNullOrEmpty()) {
                     val dialog = BaseDialog.newInstance(
                         getString(R.string.app_name),
@@ -69,8 +69,8 @@ class AddCardActivity : BaseActivity() {
                         goToLogin()
                     }
                     dialog.show(supportFragmentManager, null)
-                }else
-                    validateName =  isFullNameMatch(nameUser,lastNameUser,name)
+                } else
+                    validateName = isFullNameMatch(nameUser, lastNameUser, name)
 
                 if (name.isEmpty() || cardNumber.isEmpty() || cardHolderName.isEmpty() || expirationDate.isEmpty() || cvv.isEmpty() || dni.isEmpty()) {
                     showErrorDialog("Error", "Complete todos los campos")
@@ -83,14 +83,12 @@ class AddCardActivity : BaseActivity() {
                         "Error",
                         "Fecha de expiración o formato MM/YY inválidos"
                     )
-                } else if(!validateName) {
+                } else if (!validateName) {
                     showErrorDialog(
                         "Error",
-                        "No puedes agregar una tarjeta de otra persona,\ncorrobora los datos e intanta nuevamente"
+                        "No puedes agregar una tarjeta de otra persona,\ncorrobora los datos e inténtalo nuevamente"
                     )
-                }
-
-                else {
+                } else {
                     val encryptedCardNumber = EncryptionUtil.encrypt(cardNumber)
                     val encryptedCvv = EncryptionUtil.encrypt(cvv)
                     val cardType = detectCardType(cardNumber)
@@ -104,7 +102,8 @@ class AddCardActivity : BaseActivity() {
                             cvv = encryptedCvv,
                             card_type = cardType,
                             dni = dni,
-                            user_id = AppPreferences.getUser()?.userId ?: 0
+                            user_id = AppPreferences.getUser()?.userId ?: 0,
+                            isSelected = false
                         )
                     )
                 }
@@ -130,13 +129,22 @@ class AddCardActivity : BaseActivity() {
         val cardDrawableAmex = R.drawable.ic_amex
 
         editText.addTextChangedListener(object : TextWatcher {
+            private var isFormatting = false
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                val cardNumber = s.toString().replace(" ", "")
+                if (isFormatting) return
 
+                isFormatting = true
+                val formattedText = formatCardNumber(s.toString())
+                editText.setText(formattedText)
+                editText.setSelection(formattedText.length)
+                isFormatting = false
+
+                val cardNumber = formattedText.replace(" ", "")
                 val cardTypeDrawable = when {
                     cardNumber.startsWith("5") -> cardDrawableMastercard
                     cardNumber.startsWith("4") -> cardDrawableVisa
@@ -149,6 +157,7 @@ class AddCardActivity : BaseActivity() {
         })
     }
 
+
     private fun detectCardType(cardNumber: String): String {
         return when (cardNumber.first()) {
             '3' -> KEY_AMEX
@@ -156,6 +165,39 @@ class AddCardActivity : BaseActivity() {
             '5' -> KEY_MASTER
             else -> "Unknown"
         }
+    }
+
+    private fun formatCardNumber(cardNumber: String): String {
+        val digitsOnly = cardNumber.replace("\\s".toRegex(), "")
+        val formatted = StringBuilder()
+
+        when {
+            digitsOnly.startsWith("3") -> {
+                // Formatting cards start with 3
+                for (i in digitsOnly.indices) {
+                    if (i == 4 || i == 10) {
+                        formatted.append(" ")
+                    }
+                    formatted.append(digitsOnly[i])
+                }
+            }
+
+            digitsOnly.startsWith("4") || digitsOnly.startsWith("5") -> {
+                // Formatting cards start with 4 or 5
+                for (i in digitsOnly.indices) {
+                    if (i > 0 && i % 4 == 0) {
+                        formatted.append(" ")
+                    }
+                    formatted.append(digitsOnly[i])
+                }
+            }
+
+            else -> {
+                return digitsOnly
+            }
+        }
+
+        return formatted.toString()
     }
 
     private fun isValidExpirationDate(expirationDate: String): Boolean {

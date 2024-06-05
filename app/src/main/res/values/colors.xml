@@ -14,11 +14,9 @@
     <color name="greyLight">#D1D1D6</color>
     <color name="disabled_grey">#B3B3B3</color>
 
-
     <color name="softGrey">#999999</color>
     <color name="whiteGrey">#71747a</color>
     <color name="softWhite">#e6e6e6</color>
-    <color name="whiteTabsSeries">#D1D1D6</color>
     <color name="button_background">#454546</color>
 
     <color name="blueGrey">#8A969E</color>
@@ -27,7 +25,7 @@
     <color name="whiteEldar">#F3F3F3</color>
 
     <color name="darkerBlueSecondary">#202635</color>
-    <color name="darkBlue">#131722</color>
+    <color name="darkBlue">#1E2436</color>
     <color name="darkBlueEldar">#304250</color>
 
     <color name="blueDark">#1E2436</color>
@@ -37,6 +35,7 @@
     <color name="grey_disabled_light">#8A969E</color>
     <color name="edit_text">#FFFFFFFF</color>
     <color name="gray">#e4e4e4</color>
+    <color name="green_selected">#FF4CAF50</color>
 
     <color name="red">#FF453A</color>
     <color name="redError">#ED1C24</color>
@@ -44,14 +43,5 @@
     <color name="error">#890C11</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="transparentSoft">#35030506</color>
-    <color name="backgroundTrailer">#35030506</color>
 
-    <color name="focusBlack">#25e6e6e6</color>
-    <color name="focusBlue">#653774C3</color>
-
-
-    <color name="skeleton">#21283A</color>
-    <color name="skeleton_anim">#AA272D3E</color>
-
-    <color name="foreground_shadow">#33000000</color>
 </resources>
