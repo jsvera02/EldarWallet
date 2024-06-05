@@ -48,7 +48,6 @@ class QRViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 _qrCodeLiveData.postValue(Resource.Loading())
 
-                // Llama al método de la API para generar el código QR
                 val response = qrCodeService.generateQRCode(
                     "$userName $lastName",
                     "a516806c99mshf9a2cbdba83e90bp13be9fjsn25e20ad24654",
@@ -58,7 +57,6 @@ class QRViewModel(application: Application) : AndroidViewModel(application) {
                     "#131722"
                 )
 
-                // Maneja la respuesta de forma asíncrona
                 response.enqueue(object : Callback<ResponseBody> {
                     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                         if (response.isSuccessful) {

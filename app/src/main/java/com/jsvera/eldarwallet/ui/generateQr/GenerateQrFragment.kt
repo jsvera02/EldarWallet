@@ -33,11 +33,9 @@ class GenerateQrFragment : BaseFragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Observa los cambios en el LiveData del ViewModel
         qrViewModel.qrCodeLiveData.observe(viewLifecycleOwner) { resource ->
             when (resource) {
                 is Resource.Loading -> {
@@ -66,7 +64,6 @@ class GenerateQrFragment : BaseFragment() {
             }
         }
 
-        // Llama al método para generar el QR cuando sea necesario
         generateQRCode()
     }
 
