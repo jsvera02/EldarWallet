@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.jsvera.eldarwallet.R
 import com.jsvera.eldarwallet.base.BaseDialog
 import com.jsvera.eldarwallet.base.BaseFragment
@@ -133,7 +135,7 @@ class HomeFragment : BaseFragment() {
         val cardAdapter = CardAdapter(cards)
         binding.rvCards.apply {
             adapter = cardAdapter
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 

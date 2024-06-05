@@ -73,7 +73,7 @@ class PaymentFragment : BaseFragment() {
         val cardAdapter = CardAdapter(cards)
         binding.rvCards.apply {
             adapter = cardAdapter
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
