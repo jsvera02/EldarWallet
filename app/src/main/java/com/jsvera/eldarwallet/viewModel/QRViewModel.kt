@@ -28,7 +28,7 @@ class QRViewModel(application: Application) : AndroidViewModel(application) {
                     .addInterceptor { chain ->
                         val request = chain.request().newBuilder()
                             .addHeader("Content-Type", "application/json")
-                            .addHeader("X-RapidAPI-Key", "6345193e77msh05622b1c233a472p123f6ejsn6da691b20a43")
+                            .addHeader("X-RapidAPI-Key", "03081e8c64msha15e280819e3cadp1da469jsna8f1564dfaa2")
                             .addHeader("X-RapidAPI-Host", "neutrinoapi-qr-code.p.rapidapi.com")
                             .build()
                         chain.proceed(request)
@@ -50,7 +50,7 @@ class QRViewModel(application: Application) : AndroidViewModel(application) {
 
                 val response = qrCodeService.generateQRCode(
                     "$userName $lastName",
-                    "a516806c99mshf9a2cbdba83e90bp13be9fjsn25e20ad24654",
+                    "03081e8c64msha15e280819e3cadp1da469jsna8f1564dfaa2",
                     320,
                     320,
                     "#4586BE",
